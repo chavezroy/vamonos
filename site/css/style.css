@@ -1,0 +1,695 @@
+/* ==========================================================================
+   Vámonos with Steve Walker — memorial site stylesheet
+   Palette: tan/khaki paper, dark warm grey ink, forest green, burgundy.
+   Typography: classic book serif, article-focused, responsive.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  /* Paper & ink */
+  --paper:        #F1EBDD;   /* warm tan/khaki paper */
+  --paper-warm:   #E9E1CC;   /* deeper khaki for panels */
+  --paper-bright: #FAF5E9;   /* photo mats, cards */
+  --ink:          #2E2B26;   /* dark warm grey */
+  --ink-soft:     #565145;   /* secondary text */
+  --ink-faint:    #6C6557;   /* meta text (still AA on paper) */
+
+  /* Accents */
+  --green:        #3D5443;   /* forest green */
+  --green-deep:   #2E4034;   /* header/footer band */
+  --burgundy:     #6F2D33;   /* wine */
+  --burgundy-deep:#57232A;
+
+  /* Rules & lines */
+  --rule:         #CFC4AB;
+  --rule-strong:  #B1A487;
+
+  /* Type */
+  --serif: "Iowan Old Style", Charter, "Bitstream Charter", "Sitka Text",
+           Cambria, "Palatino Linotype", Palatino, Georgia, serif;
+
+  --measure: 40rem;
+}
+
+/* --------------------------------------------------------------------------
+   Base
+   -------------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--green-deep); /* shows behind overscroll */
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--burgundy); color: var(--paper-bright); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--burgundy); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--green); }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 0.6em;
+}
+
+p { margin: 0 0 1.1em; }
+
+em { font-style: italic; }
+
+.container {
+  max-width: 46rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+.prose {
+  max-width: var(--measure);
+  margin-inline: auto;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--green-deep);
+  color: var(--paper-bright);
+  padding: 0.6em 1.2em;
+  z-index: 100;
+}
+.skip-link:focus {
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Masthead & navigation
+   -------------------------------------------------------------------------- */
+
+.site-header {
+  background: var(--paper);
+  border-top: 6px solid var(--green-deep);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.masthead {
+  text-align: center;
+  padding: 1.6rem 1rem 1.1rem;
+}
+
+.wordmark {
+  font-style: italic;
+  font-size: clamp(1.3rem, 1.1rem + 1vw, 1.65rem);
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.wordmark:hover { color: var(--green); }
+
+.masthead .est {
+  margin: 0.15rem 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.site-nav {
+  border-top: 1px solid var(--rule);
+}
+
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap: 1.6rem;
+  row-gap: 0;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: 0.75rem 0.1rem;
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.site-nav a:hover { color: var(--burgundy); }
+
+.site-nav a[aria-current="page"] {
+  color: var(--burgundy);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Page scaffolding
+   -------------------------------------------------------------------------- */
+
+main {
+  padding: 2.75rem 0 4rem;
+}
+
+.kicker {
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin: 0 0 0.9rem;
+}
+
+.page-title {
+  text-align: center;
+  font-size: clamp(1.9rem, 1.4rem + 2.2vw, 2.6rem);
+  font-weight: 600;
+  margin-bottom: 0.35em;
+}
+
+.deck {
+  text-align: center;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.08em;
+  max-width: 34rem;
+  margin: 0 auto 1rem;
+}
+
+/* Ornament divider — a printer's fleuron */
+.orn {
+  text-align: center;
+  color: var(--burgundy);
+  font-size: 1.35rem;
+  line-height: 1;
+  margin: 2.4rem auto;
+  user-select: none;
+}
+
+.orn.small { font-size: 1.05rem; margin: 1.6rem auto; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.5rem auto;
+  max-width: var(--measure);
+}
+
+/* Header rule group under page titles */
+.title-rule {
+  max-width: 14rem;
+  margin: 1.4rem auto 0;
+  border: 0;
+  border-top: 4px double var(--rule-strong);
+}
+
+/* --------------------------------------------------------------------------
+   Article typography
+   -------------------------------------------------------------------------- */
+
+.article h2 {
+  font-size: 1.45rem;
+  margin-top: 2.6rem;
+}
+
+.article h3 {
+  font-size: 1.15rem;
+  margin-top: 2rem;
+}
+
+.dropcap::first-letter {
+  float: left;
+  font-size: 3.35em;
+  line-height: 0.8;
+  padding: 0.06em 0.09em 0 0;
+  color: var(--burgundy);
+  font-weight: 500;
+}
+
+.note {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.95em;
+  max-width: 36rem;
+  margin: 0 auto 1.4em;
+  text-align: center;
+}
+
+.note-left {
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 0.95em;
+  margin-bottom: 1.4em;
+}
+
+.byline {
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 2rem;
+}
+
+/* Epigraphs (About page) */
+.epigraph {
+  margin: 0 auto 1.6rem;
+  max-width: 33rem;
+  text-align: center;
+}
+.epigraph p {
+  font-style: italic;
+  font-size: 1.05em;
+  margin-bottom: 0.35em;
+}
+.epigraph cite {
+  font-style: normal;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+blockquote {
+  margin: 1.6em 0;
+  padding-left: 1.2em;
+  border-left: 2px solid var(--green);
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+/* "Hear him read it" link pair */
+.listen {
+  text-align: center;
+  margin: 0 auto 2.6rem;
+  padding: 1.1rem 1rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  max-width: 30rem;
+}
+
+.listen-label {
+  display: block;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin-bottom: 0.5rem;
+}
+
+.listen a { font-size: 1.02rem; }
+
+.listen-sep { color: var(--rule-strong); margin: 0 0.55rem; }
+
+/* Sign-off */
+.signoff {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--green-deep);
+  margin: 2.2rem 0 0;
+}
+
+/* Back to top */
+.backtop {
+  display: block;
+  text-align: right;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-faint);
+  margin-top: 1rem;
+}
+.backtop:hover { color: var(--burgundy); }
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-block;
+  background: var(--burgundy);
+  color: var(--paper-bright);
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.9em 1.8em;
+  border: 1px solid var(--burgundy-deep);
+  border-radius: 2px;
+}
+.btn:hover { background: var(--burgundy-deep); color: var(--paper-bright); }
+
+.btn-row { text-align: center; margin: 2.2rem 0; }
+
+.contact-note {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  max-width: 30rem;
+  margin: -0.8rem auto 0;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Photographs
+   -------------------------------------------------------------------------- */
+
+.frame {
+  background: var(--paper-bright);
+  border: 1px solid var(--rule-strong);
+  padding: 0.7rem;
+  box-shadow: 0 1px 2px rgba(46, 43, 38, 0.16), 0 10px 28px rgba(46, 43, 38, 0.12);
+  margin: 0;
+}
+
+figcaption {
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 0.7rem;
+  line-height: 1.5;
+}
+
+.hero-figure {
+  max-width: 52rem;
+  margin: 0 auto 2.6rem;
+  padding-inline: 1.25rem;
+}
+
+/* About portrait */
+.portrait {
+  max-width: 17rem;
+  margin: 0 auto 2.2rem;
+}
+@media (min-width: 720px) {
+  .portrait {
+    float: right;
+    width: 15.5rem;
+    margin: 0.4rem 0 1.4rem 2.2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Home / splash
+   -------------------------------------------------------------------------- */
+
+.memorial-head { text-align: center; margin-bottom: 2.4rem; }
+
+.memorial-name {
+  font-size: clamp(2.3rem, 1.6rem + 3.4vw, 3.6rem);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  margin: 0 0 0.35rem;
+}
+
+.memorial-dates {
+  font-size: clamp(0.95rem, 0.85rem + 0.5vw, 1.15rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 1rem;
+}
+
+.memorial-tagline {
+  font-style: italic;
+  font-size: 1.14rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Service details panel */
+.panel {
+  background: var(--paper-warm);
+  border-top: 4px double var(--rule-strong);
+  border-bottom: 4px double var(--rule-strong);
+  padding: 1.8rem 1.6rem;
+  margin: 2.6rem 0;
+  text-align: center;
+}
+.panel h2 {
+  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin-bottom: 0.9rem;
+}
+.panel p { margin-bottom: 0.4em; }
+.panel .fine {
+  font-style: italic;
+  font-size: 0.92em;
+  color: var(--ink-soft);
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+/* Italic descenders need extra room above the rule */
+.panel .fine a {
+  text-underline-offset: 4px;
+  text-decoration-color: var(--rule-strong);
+}
+
+.panel .fine a:hover { text-decoration-color: currentColor; }
+
+/* --------------------------------------------------------------------------
+   Contents (essays index)
+   -------------------------------------------------------------------------- */
+
+.contents {
+  background: var(--paper-bright);
+  border: 1px solid var(--rule);
+  padding: 1.5rem 2rem 1.2rem;
+  margin: 2.2rem 0;
+}
+.contents h2 {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--green-deep);
+  margin-bottom: 0.9rem;
+}
+.contents ol {
+  margin: 0;
+  padding-left: 1.4em;
+  columns: 2;
+  column-gap: 2.5rem;
+  font-size: 0.98em;
+}
+.contents li { margin-bottom: 0.35em; break-inside: avoid; }
+.contents a { text-decoration: none; }
+.contents a:hover { text-decoration: underline; }
+@media (max-width: 620px) { .contents ol { columns: 1; } }
+
+/* Essay articles */
+.essay { margin-top: 3rem; }
+.essay-head { text-align: center; margin-bottom: 1.4rem; }
+.essay-head h2 { font-size: 1.55rem; margin-bottom: 0.2em; }
+.essay-head .essay-sub {
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 0.95em;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Press cards
+   -------------------------------------------------------------------------- */
+
+.press-item {
+  border-top: 1px solid var(--rule);
+  padding: 2rem 0 0.8rem;
+  margin-top: 2rem;
+}
+.press-item:first-of-type { border-top: 0; margin-top: 0; padding-top: 0; }
+.press-item h2 { font-size: 1.32rem; margin-bottom: 0.25em; }
+.press-meta {
+  font-size: 0.76rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 0.9em;
+}
+.press-meta .pub { font-weight: 600; }
+.press-link { font-size: 0.98em; }
+.press-pending {
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 0.95em;
+}
+
+/* --------------------------------------------------------------------------
+   Poetry
+   -------------------------------------------------------------------------- */
+
+.poem { margin-top: 3.2rem; }
+.poem-head { text-align: center; margin-bottom: 1.8rem; }
+.poem-num {
+  font-size: 0.82rem;
+  letter-spacing: 0.24em;
+  color: var(--burgundy);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.poem-head h2 { font-size: 1.6rem; margin-bottom: 0.15em; }
+.poem-head .poem-sub {
+  font-style: italic;
+  color: var(--ink-faint);
+  margin: 0;
+}
+
+.verse {
+  max-width: 33rem;
+  margin: 0 auto;
+  font-size: 1.02em;
+  line-height: 1.66;
+}
+.verse .stanza { margin: 0 0 1.5em; }
+.verse .l {
+  display: block;
+  padding-left: 1.5em;
+  text-indent: -1.5em;
+}
+
+/* --------------------------------------------------------------------------
+   Gallery
+   -------------------------------------------------------------------------- */
+
+.gallery-intro { text-align: center; }
+
+.gallery-grid {
+  list-style: none;
+  margin: 2.6rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2.2rem 1.6rem;
+  align-items: start;
+}
+
+.gallery-grid a { display: block; }
+
+.wide { max-width: 62rem; }
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+  background: var(--green-deep);
+  color: #E7DFCA;
+  text-align: center;
+  padding: 3rem 1.25rem 2.6rem;
+  font-size: 0.95rem;
+}
+
+.site-footer .emblem {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 1rem;
+}
+
+.footer-memorial { margin-bottom: 0.3em; }
+
+.footer-signoff {
+  font-style: italic;
+  font-size: 1.12rem;
+  margin-bottom: 1.4em;
+}
+
+.footer-donate {
+  font-style: italic;
+  font-size: 0.88rem;
+  color: #C9BFA4;
+  max-width: 38rem;
+  margin: 0 auto 1.6em;
+  line-height: 1.7;
+}
+
+.site-footer a { color: #E7DFCA; }
+.site-footer a:hover { color: #fff; }
+
+.footer-links {
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 1.4em;
+}
+.footer-links a { text-decoration: none; border-bottom: 1px solid #5E7261; padding-bottom: 2px; }
+.footer-links span { color: #5E7261; margin: 0 0.7em; }
+
+.footer-copy {
+  font-size: 0.82rem;
+  color: #A8B5A6;
+  max-width: 34rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   404
+   -------------------------------------------------------------------------- */
+
+.lost { text-align: center; padding: 3rem 0; }
+
+/* --------------------------------------------------------------------------
+   Small screens
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+  .site-nav ul { column-gap: 1.05rem; }
+  .site-nav a { padding-block: 0.55rem; font-size: 0.7rem; letter-spacing: 0.13em; }
+  .masthead { padding: 1.25rem 1rem 0.9rem; }
+  .memorial-dates { font-size: 0.88rem; letter-spacing: 0.13em; }
+  .frame { padding: 0.5rem; }
+  .panel { padding: 1.5rem 1.1rem; }
+  .contents { padding: 1.2rem 1.3rem 1rem; }
+}
+
+/* --------------------------------------------------------------------------
+   Print
+   -------------------------------------------------------------------------- */
+
+@media print {
+  html, body { background: #fff; color: #000; }
+  .site-nav, .site-footer, .btn-row, .backtop, .skip-link { display: none; }
+  .site-header { border: 0; border-bottom: 1px solid #000; }
+  .frame { box-shadow: none; }
+  a { color: #000; text-decoration: none; }
+}

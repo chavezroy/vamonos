@@ -1,0 +1,21 @@
+# ---------------------------------------------------------------------------
+# PRIVATE FAMILY MATERIAL — must never be committed to a public repository.
+#
+# These research files contain Steve's recorded "outlaw stories," private
+# correspondence from named third parties, and his hunting field diaries.
+# Per the content package, that material is intentionally kept off the public
+# site — some of it at Steve's own request. Git history is effectively
+# permanent on a public repo, so these stay untracked.
+# ---------------------------------------------------------------------------
+Steve_Walker_Book_Research_Notes.md
+Steve_Walker_Notes_and_References.md
+Steve_Walker_Website_Content_Package.md
+
+# Full-resolution photo originals (~70 MB). The web-optimized copies the site
+# actually serves are committed under site/images/. Keep these backed up
+# somewhere other than git.
+photos/
+
+# macOS
+.DS_Store
+**/.DS_Store
