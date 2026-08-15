@@ -371,6 +371,65 @@ blockquote {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Field diaries
+   -------------------------------------------------------------------------- */
+
+.month-head {
+  text-align: center;
+  font-size: 0.86rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin: 3rem 0 0.4rem;
+}
+
+.month-head::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  margin: 0.8rem auto 0;
+  border-top: 1px solid var(--rule-strong);
+}
+
+.diary {
+  margin: 2rem 0;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--rule);
+}
+
+.diary-date {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin: 0 0 0.6em;
+}
+
+.diary p { margin-bottom: 0.9em; }
+.diary p:last-child { margin-bottom: 0; }
+
+/* Time-of-day marker inside a diary entry */
+.tod {
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-right: 0.6em;
+  white-space: nowrap;
+}
+
+.diary-summary {
+  background: var(--paper-warm);
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 1.1rem 1.3rem;
+  margin: 2.2rem 0;
+  font-size: 0.95em;
+  text-align: center;
+  line-height: 1.7;
+}
+
 /* Pull quote — for a line in his own hand */
 .pullquote {
   font-style: italic;
