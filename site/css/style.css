@@ -375,9 +375,10 @@ blockquote {
    Field diaries
    -------------------------------------------------------------------------- */
 
-.diary-hero {
-  margin: 0 auto 2.6rem;
-  max-width: 40rem;
+/* Element+class beats the bare .frame rule that zeroes margins later on */
+figure.diary-hero {
+  max-width: 38rem;
+  margin: 0.5rem auto 3.6rem;
 }
 
 .month-head {
