@@ -332,6 +332,57 @@ blockquote {
 
 .listen-sep { color: var(--rule-strong); margin: 0 0.55rem; }
 
+/* Career timeline (definition list) */
+.timeline {
+  margin: 1.6rem 0;
+}
+
+.timeline dt {
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-top: 1.4rem;
+}
+
+.timeline dd {
+  margin: 0.3rem 0 0;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.timeline dd:last-of-type { border-bottom: 0; }
+
+@media (min-width: 620px) {
+  .timeline dt {
+    float: left;
+    width: 8.5rem;
+    margin-top: 0;
+    padding-top: 0.35em;
+  }
+  .timeline dd {
+    margin-left: 9.5rem;
+    min-height: 1px;
+  }
+  .timeline dd::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+/* Pull quote — for a line in his own hand */
+.pullquote {
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--green-deep);
+  max-width: 32rem;
+  margin: 1.8rem auto;
+  padding: 0 1rem;
+}
+
 /* Sign-off */
 .signoff {
   text-align: center;
