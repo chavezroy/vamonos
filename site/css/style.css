@@ -375,6 +375,11 @@ blockquote {
    Field diaries
    -------------------------------------------------------------------------- */
 
+.diary-hero {
+  margin: 0 auto 2.6rem;
+  max-width: 40rem;
+}
+
 .month-head {
   text-align: center;
   font-size: 0.86rem;
