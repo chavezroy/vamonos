@@ -1,0 +1,10 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - test -f site/index.html
+  artifacts:
+    baseDirectory: site
+    files:
+      - '**/*'
