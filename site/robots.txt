@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vamonoswithstevewalker.com/sitemap.xml
