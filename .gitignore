@@ -16,10 +16,6 @@ Steve_Walker_Website_Content_Package.md
 # somewhere other than git.
 photos/
 
-# Local artifacts left by the former Next.js preview.
-node_modules/
-.next/
-
 # macOS
 .DS_Store
 **/.DS_Store
